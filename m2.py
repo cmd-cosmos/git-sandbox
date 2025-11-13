@@ -6,6 +6,8 @@ import time
 import sys
 import subprocess
 
+
+
 def check_untracked():
     print("untracked files: ")
     proc = subprocess.run(["git", "ls-files", "-o"], stdout=subprocess.PIPE, text=True)
@@ -24,6 +26,12 @@ def check_untracked():
     
     print(lst)
 
+    proc3 = subprocess.run(["git", "status", "-s"], stdout=subprocess.PIPE, text=True)
+    for i in proc3.stdout.splitlines():
+        print(i)
+    # for item in stat:
+
+    
 check_untracked()
 
 def diff_check():
