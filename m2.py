@@ -15,18 +15,19 @@ def check_untracked():
     lst = list()
     start_val = 1
     for i,j in enumerate(proc.stdout.splitlines(), start=start_val):
-        print(i, j)
+        # print(i, j)
         lst.append(j)
     
     proc2 = subprocess.run(["git", "diff", "--name-only"], text=True, stdout=subprocess.PIPE)
 
     for i,j in enumerate(proc2.stdout.splitlines(), start=(start_val+1)):
-        print(i, j)
+        # print(i, j)
         lst.append(j)
     
     print(lst)
 
     proc3 = subprocess.run(["git", "status", "-s"], stdout=subprocess.PIPE, text=True)
+    print("\nstatus -s")
     for i in proc3.stdout.splitlines():
         print(i)
     # for item in stat:
@@ -38,3 +39,4 @@ def diff_check():
     print("diff check: ")
     a = subprocess.run(["git", "diff", "--name-only"], text=True, check=False)
 
+print(os.system("git status -s"))
